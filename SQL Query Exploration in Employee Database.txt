@@ -1,0 +1,32 @@
+Question 3
+
+CREATE DATABASE EMPLOYEE_db;
+
+CREATE TABLE Departments (
+department_id INT PRIMARY KEY,
+department_name VARCHAR(100)
+);
+
+CREATE TABLE Employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    age INT,
+    department_id INT,
+    FOREIGN KEY (department_id) REFERENCES Departments(department_id)
+);
+
+INSERT INTO Departments (department_id, department_name)
+VALUES (1, 'HR'), (2, 'Marketing'), (3, 'IT'), (4, 'Sales');
+
+INSERT INTO Employees (employee_id, name, age, department_id)
+VALUES (101, 'John Doe', 30, 1),
+       (102, 'Jane Smith', 28, 2),
+       (103, 'Alice Jones', 32, 3),
+       (104, 'Bob Williams', 25, 1),
+       (105, 'Mike Brown', 27, 3);
+
+SELECT DISTINCT department_id FROM Employees;
+SELECT COUNT(employee_id), department_id FROM Employees GROUP BY department_id;
+SELECT name, age, department_id FROM Employees
+WHERE age BETWEEN 25 AND 30;
+SELECT * FROM Employees;
